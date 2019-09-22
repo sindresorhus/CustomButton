@@ -1,0 +1,6 @@
+/.build
+/Packages
+/.swiftpm
+/*.xcodeproj
+/Example/**/xcuserdata
+/Example/**/project.xcworkspace
