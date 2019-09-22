@@ -21,7 +21,7 @@ This package is used in production by [Gifski](https://github.com/sindresorhus/G
 SwiftPM:
 
 ```swift
-.package(url: "https://github.com/sindresorhus/CustomButton", from: "0.0.0")
+.package(url: "https://github.com/sindresorhus/CustomButton", from: "0.1.0")
 ```
 
 
