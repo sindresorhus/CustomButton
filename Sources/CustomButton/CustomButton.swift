@@ -24,97 +24,97 @@ open class CustomButton: NSButton {
 
 	@IBInspectable public var textColor: NSColor = .labelColor {
 		didSet {
-			needsDisplay = true
-			animateColor()
+			titleLayer.foregroundColor = textColor.cgColor
 		}
 	}
 
 	@IBInspectable public var activeTextColor: NSColor = .labelColor {
 		didSet {
-			needsDisplay = true
-			animateColor()
+			if state == .on {
+				titleLayer.foregroundColor = textColor.cgColor
+			}
 		}
 	}
 
 	@IBInspectable public var cornerRadius: Double = 0 {
 		didSet {
-			needsDisplay = true
+			layer?.cornerRadius = CGFloat(cornerRadius)
 		}
 	}
 
 	@IBInspectable public var borderWidth: Double = 0 {
 		didSet {
-			needsDisplay = true
+			layer?.borderWidth = CGFloat(borderWidth)
 		}
 	}
 
 	@IBInspectable public var borderColor: NSColor = .clear {
 		didSet {
-			needsDisplay = true
-			animateColor()
+			layer?.borderColor = borderColor.cgColor
 		}
 	}
 
 	@IBInspectable public var activeBorderColor: NSColor = .clear {
 		didSet {
-			needsDisplay = true
-			animateColor()
+			if state == .on {
+				layer?.borderColor = activeBorderColor.cgColor
+			}
 		}
 	}
 
 	@IBInspectable public var backgroundColor: NSColor = .clear {
 		didSet {
-			needsDisplay = true
-			animateColor()
+			layer?.backgroundColor = backgroundColor.cgColor
 		}
 	}
 
 	@IBInspectable public var activeBackgroundColor: NSColor = .clear {
 		didSet {
-			needsDisplay = true
-			animateColor()
+			if state == .on {
+				layer?.backgroundColor = activeBackgroundColor.cgColor
+			}
 		}
 	}
 
 	@IBInspectable public var shadowRadius: Double = 0 {
 		didSet {
-			needsDisplay = true
-			animateColor()
+			layer?.shadowRadius = CGFloat(shadowRadius)
 		}
 	}
 
 	@IBInspectable public var activeShadowRadius: Double = -1 {
 		didSet {
-			needsDisplay = true
-			animateColor()
+			if state == .on {
+				layer?.shadowRadius = CGFloat(activeShadowRadius)
+			}
 		}
 	}
 
 	@IBInspectable public var shadowOpacity: Double = 0 {
 		didSet {
-			needsDisplay = true
-			animateColor()
+			layer?.shadowOpacity = Float(shadowOpacity)
 		}
 	}
 
 	@IBInspectable public var activeShadowOpacity: Double = -1 {
 		didSet {
-			needsDisplay = true
-			animateColor()
+			if state == .on {
+				layer?.shadowOpacity = Float(activeShadowOpacity)
+			}
 		}
 	}
 
 	@IBInspectable public var shadowColor: NSColor = .clear {
 		didSet {
-			needsDisplay = true
-			animateColor()
+			layer?.shadowColor = shadowColor.cgColor
 		}
 	}
 
 	@IBInspectable public var activeShadowColor: NSColor? {
 		didSet {
-			needsDisplay = true
-			animateColor()
+			if state == .on, let activeShadowColor = activeShadowColor {
+				layer?.shadowColor = activeShadowColor.cgColor
+			}
 		}
 	}
 
@@ -176,12 +176,23 @@ open class CustomButton: NSButton {
 	}
 
 	private func setup() {
+		let isOn = state == .on
+
 		wantsLayer = true
 
 		layer?.masksToBounds = false
 
+		layer?.cornerRadius = CGFloat(cornerRadius)
+		layer?.borderWidth = CGFloat(borderWidth)
+		layer?.shadowRadius = CGFloat(isOn && activeShadowRadius != -1 ? activeShadowRadius : shadowRadius)
+		layer?.shadowOpacity = Float(isOn && activeShadowOpacity != -1 ? activeShadowOpacity : shadowOpacity)
+		layer?.backgroundColor = isOn ? self.activeBackgroundColor.cgColor : self.backgroundColor.cgColor
+		layer?.borderColor = isOn ? self.activeBorderColor.cgColor : self.borderColor.cgColor
+		layer?.shadowColor = isOn ? (self.activeShadowColor?.cgColor ?? self.shadowColor.cgColor) : self.shadowColor.cgColor
+
 		titleLayer.alignmentMode = .center
 		titleLayer.contentsScale = window?.backingScaleFactor ?? 2
+		titleLayer.foregroundColor = isOn ? self.activeTextColor.cgColor : self.textColor.cgColor
 		layer?.addSublayer(titleLayer)
 		setTitle()
 
@@ -207,11 +218,6 @@ open class CustomButton: NSButton {
 	}
 
 	override open func updateLayer() {
-		let isOn = state == .on
-		layer?.cornerRadius = CGFloat(cornerRadius)
-		layer?.borderWidth = CGFloat(borderWidth)
-		layer?.shadowRadius = CGFloat(isOn && activeShadowRadius != -1 ? activeShadowRadius : shadowRadius)
-		layer?.shadowOpacity = Float(isOn && activeShadowOpacity != -1 ? activeShadowOpacity : shadowOpacity)
 		animateColor()
 	}
 
