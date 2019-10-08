@@ -5,10 +5,10 @@ open class CustomButton: NSButton {
 	private let titleLayer = CATextLayer()
 	private var isMouseDown = false
 
-	public static func circularButton(title: String, radius: Double, center: CGPoint) -> CustomButton {
+	public static func circularButton(title: String, radius: CGFloat, center: CGPoint) -> CustomButton {
 		with(CustomButton()) {
 			$0.title = title
-			$0.frame = CGRect(x: Double(center.x) - radius, y: Double(center.y) - radius, width: radius * 2, height: radius * 2)
+			$0.frame = CGRect(x: center.x - radius, y: center.y - radius, width: radius * 2, height: radius * 2)
 			$0.cornerRadius = radius
 			$0.font = NSFont.systemFont(ofSize: CGFloat(radius * 2 / 3))
 		}
@@ -36,13 +36,13 @@ open class CustomButton: NSButton {
 		}
 	}
 
-	@IBInspectable public var cornerRadius: Double = 0 {
+	@IBInspectable public var cornerRadius: CGFloat = 0 {
 		didSet {
 			needsDisplay = true
 		}
 	}
 
-	@IBInspectable public var borderWidth: Double = 0 {
+	@IBInspectable public var borderWidth: CGFloat = 0 {
 		didSet {
 			needsDisplay = true
 		}
@@ -76,28 +76,28 @@ open class CustomButton: NSButton {
 		}
 	}
 
-	@IBInspectable public var shadowRadius: Double = 0 {
+	@IBInspectable public var shadowRadius: CGFloat = 0 {
 		didSet {
 			needsDisplay = true
 			animateColor()
 		}
 	}
 
-	@IBInspectable public var activeShadowRadius: Double = -1 {
+	@IBInspectable public var activeShadowRadius: CGFloat = -1 {
 		didSet {
 			needsDisplay = true
 			animateColor()
 		}
 	}
 
-	@IBInspectable public var shadowOpacity: Double = 0 {
+	@IBInspectable public var shadowOpacity: Float = 0 {
 		didSet {
 			needsDisplay = true
 			animateColor()
 		}
 	}
 
-	@IBInspectable public var activeShadowOpacity: Double = -1 {
+	@IBInspectable public var activeShadowOpacity: Float = -1 {
 		didSet {
 			needsDisplay = true
 			animateColor()
