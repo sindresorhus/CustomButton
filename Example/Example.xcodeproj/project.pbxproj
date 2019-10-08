@@ -14,8 +14,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E303033E2336989400B8ED1F /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomButton.swift; path = ../../../Sources/CustomButton/CustomButton.swift; sourceTree = "<group>"; };
-		E303033F2336989400B8ED1F /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = util.swift; path = ../../../Sources/CustomButton/util.swift; sourceTree = "<group>"; };
+		E303033E2336989400B8ED1F /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		E303033F2336989400B8ED1F /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		E3A01E832336904F00C54787 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A01E862336904F00C54787 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3A01E8B2336905000C54787 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -40,7 +40,8 @@
 				E303033E2336989400B8ED1F /* CustomButton.swift */,
 				E303033F2336989400B8ED1F /* util.swift */,
 			);
-			path = CustomButton;
+			name = CustomButton;
+			path = ../../Sources/CustomButton;
 			sourceTree = "<group>";
 		};
 		E3A01E7A2336904F00C54787 = {
