@@ -24,87 +24,97 @@ open class CustomButton: NSButton {
 
 	@IBInspectable public var textColor: NSColor = .labelColor {
 		didSet {
-            titleLayer.foregroundColor = textColor.cgColor
+			titleLayer.foregroundColor = textColor.cgColor
 		}
 	}
 
 	@IBInspectable public var activeTextColor: NSColor = .labelColor {
 		didSet {
-            if state == .on { titleLayer.foregroundColor = textColor.cgColor }
+			if state == .on {
+				titleLayer.foregroundColor = textColor.cgColor
+			}
 		}
 	}
 
 	@IBInspectable public var cornerRadius: Double = 0 {
 		didSet {
-            layer?.cornerRadius = CGFloat(cornerRadius)
+			layer?.cornerRadius = CGFloat(cornerRadius)
 		}
 	}
 
 	@IBInspectable public var borderWidth: Double = 0 {
 		didSet {
-            layer?.borderWidth = CGFloat(borderWidth)
+			layer?.borderWidth = CGFloat(borderWidth)
 		}
 	}
 
 	@IBInspectable public var borderColor: NSColor = .clear {
 		didSet {
-            layer?.borderColor = borderColor.cgColor
+			layer?.borderColor = borderColor.cgColor
 		}
 	}
 
 	@IBInspectable public var activeBorderColor: NSColor = .clear {
 		didSet {
-            if state == .on { layer?.borderColor = activeBorderColor.cgColor }
+			if state == .on {
+				layer?.borderColor = activeBorderColor.cgColor
+			}
 		}
 	}
 
 	@IBInspectable public var backgroundColor: NSColor = .clear {
 		didSet {
-            layer?.backgroundColor = backgroundColor.cgColor
+			layer?.backgroundColor = backgroundColor.cgColor
 		}
 	}
 
 	@IBInspectable public var activeBackgroundColor: NSColor = .clear {
 		didSet {
-            if state == .on { layer?.backgroundColor = activeBackgroundColor.cgColor }
+			if state == .on {
+				layer?.backgroundColor = activeBackgroundColor.cgColor
+			}
 		}
 	}
 
 	@IBInspectable public var shadowRadius: Double = 0 {
 		didSet {
-            layer?.shadowRadius = CGFloat(shadowRadius)
+			layer?.shadowRadius = CGFloat(shadowRadius)
 		}
 	}
 
 	@IBInspectable public var activeShadowRadius: Double = -1 {
 		didSet {
-            if state == .on { layer?.shadowRadius = CGFloat(activeShadowRadius) }
+			if state == .on {
+				layer?.shadowRadius = CGFloat(activeShadowRadius)
+			}
 		}
 	}
 
 	@IBInspectable public var shadowOpacity: Double = 0 {
 		didSet {
-            layer?.shadowOpacity = Float(shadowOpacity)
+			layer?.shadowOpacity = Float(shadowOpacity)
 		}
 	}
 
 	@IBInspectable public var activeShadowOpacity: Double = -1 {
 		didSet {
-            if state == .on { layer?.shadowOpacity = Float(activeShadowOpacity) }
+			if state == .on {
+				layer?.shadowOpacity = Float(activeShadowOpacity)
+			}
 		}
 	}
 
 	@IBInspectable public var shadowColor: NSColor = .clear {
 		didSet {
-            layer?.shadowColor = shadowColor.cgColor
+			layer?.shadowColor = shadowColor.cgColor
 		}
 	}
 
 	@IBInspectable public var activeShadowColor: NSColor? {
 		didSet {
-            if let activeShadowColor = activeShadowColor, state == .on {
-                layer?.shadowColor = activeShadowColor.cgColor
-            }
+			if state == .on, let activeShadowColor = activeShadowColor {
+				layer?.shadowColor = activeShadowColor.cgColor
+			}
 		}
 	}
 
@@ -168,23 +178,23 @@ open class CustomButton: NSButton {
 	private func setup() {
 		let isOn = state == .on
 
-        wantsLayer = true
+		wantsLayer = true
 
-        layer?.masksToBounds = false
+		layer?.masksToBounds = false
 
-        layer?.cornerRadius = CGFloat(cornerRadius)
-        layer?.borderWidth = CGFloat(borderWidth)
-        layer?.shadowRadius = CGFloat(isOn && activeShadowRadius != -1 ? activeShadowRadius : shadowRadius)
-        layer?.shadowOpacity = Float(isOn && activeShadowOpacity != -1 ? activeShadowOpacity : shadowOpacity)
-        layer?.backgroundColor = isOn ? self.activeBackgroundColor.cgColor : self.backgroundColor.cgColor
-        layer?.borderColor = isOn ? self.activeBorderColor.cgColor : self.borderColor.cgColor
-        layer?.shadowColor = isOn ? (self.activeShadowColor?.cgColor ?? self.shadowColor.cgColor) : self.shadowColor.cgColor
+		layer?.cornerRadius = CGFloat(cornerRadius)
+		layer?.borderWidth = CGFloat(borderWidth)
+		layer?.shadowRadius = CGFloat(isOn && activeShadowRadius != -1 ? activeShadowRadius : shadowRadius)
+		layer?.shadowOpacity = Float(isOn && activeShadowOpacity != -1 ? activeShadowOpacity : shadowOpacity)
+		layer?.backgroundColor = isOn ? self.activeBackgroundColor.cgColor : self.backgroundColor.cgColor
+		layer?.borderColor = isOn ? self.activeBorderColor.cgColor : self.borderColor.cgColor
+		layer?.shadowColor = isOn ? (self.activeShadowColor?.cgColor ?? self.shadowColor.cgColor) : self.shadowColor.cgColor
 
-        titleLayer.alignmentMode = .center
-        titleLayer.contentsScale = window?.backingScaleFactor ?? 2
-        titleLayer.foregroundColor = isOn ? self.activeTextColor.cgColor : self.textColor.cgColor
-        layer?.addSublayer(titleLayer)
-        setTitle()
+		titleLayer.alignmentMode = .center
+		titleLayer.contentsScale = window?.backingScaleFactor ?? 2
+		titleLayer.foregroundColor = isOn ? self.activeTextColor.cgColor : self.textColor.cgColor
+		layer?.addSublayer(titleLayer)
+		setTitle()
 
 		needsDisplay = true
 	}
