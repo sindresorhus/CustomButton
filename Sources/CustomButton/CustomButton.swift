@@ -24,97 +24,87 @@ open class CustomButton: NSButton {
 
 	@IBInspectable public var textColor: NSColor = .labelColor {
 		didSet {
-			needsDisplay = true
-			animateColor()
+            titleLayer.foregroundColor = textColor.cgColor
 		}
 	}
 
 	@IBInspectable public var activeTextColor: NSColor = .labelColor {
 		didSet {
-			needsDisplay = true
-			animateColor()
+            if state == .on { titleLayer.foregroundColor = textColor.cgColor }
 		}
 	}
 
 	@IBInspectable public var cornerRadius: CGFloat = 0 {
 		didSet {
-			needsDisplay = true
+            layer?.cornerRadius = cornerRadius
 		}
 	}
 
 	@IBInspectable public var borderWidth: CGFloat = 0 {
 		didSet {
-			needsDisplay = true
+            layer?.borderWidth = borderWidth
 		}
 	}
 
 	@IBInspectable public var borderColor: NSColor = .clear {
 		didSet {
-			needsDisplay = true
-			animateColor()
+            layer?.borderColor = borderColor.cgColor
 		}
 	}
 
 	@IBInspectable public var activeBorderColor: NSColor = .clear {
 		didSet {
-			needsDisplay = true
-			animateColor()
+            if state == .on { layer?.borderColor = activeBorderColor.cgColor }
 		}
 	}
 
 	@IBInspectable public var backgroundColor: NSColor = .clear {
 		didSet {
-			needsDisplay = true
-			animateColor()
+            layer?.backgroundColor = backgroundColor.cgColor
 		}
 	}
 
 	@IBInspectable public var activeBackgroundColor: NSColor = .clear {
 		didSet {
-			needsDisplay = true
-			animateColor()
+            if state == .on { layer?.backgroundColor = activeBackgroundColor.cgColor }
 		}
 	}
 
 	@IBInspectable public var shadowRadius: CGFloat = 0 {
 		didSet {
-			needsDisplay = true
-			animateColor()
+            layer?.shadowRadius = shadowRadius
 		}
 	}
 
 	@IBInspectable public var activeShadowRadius: CGFloat = -1 {
 		didSet {
-			needsDisplay = true
-			animateColor()
+            if state == .on { layer?.shadowRadius = activeShadowRadius }
 		}
 	}
 
 	@IBInspectable public var shadowOpacity: Float = 0 {
 		didSet {
-			needsDisplay = true
-			animateColor()
+            layer?.shadowOpacity = shadowOpacity
 		}
 	}
 
 	@IBInspectable public var activeShadowOpacity: Float = -1 {
 		didSet {
-			needsDisplay = true
-			animateColor()
+            if state == .on { layer?.shadowOpacity = activeShadowOpacity }
 		}
 	}
 
 	@IBInspectable public var shadowColor: NSColor = .clear {
 		didSet {
-			needsDisplay = true
-			animateColor()
+            layer?.shadowColor = shadowColor.cgColor
 		}
 	}
 
 	@IBInspectable public var activeShadowColor: NSColor? {
 		didSet {
-			needsDisplay = true
-			animateColor()
+            if let activeShadowColor = activeShadowColor, state == .on {
+                layer?.shadowColor = activeShadowColor.cgColor
+            }
 		}
 	}
 
