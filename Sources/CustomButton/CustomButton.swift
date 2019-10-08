@@ -176,14 +176,25 @@ open class CustomButton: NSButton {
 	}
 
 	private func setup() {
-		wantsLayer = true
+		let isOn = state == .on
 
-		layer?.masksToBounds = false
+        wantsLayer = true
 
-		titleLayer.alignmentMode = .center
-		titleLayer.contentsScale = window?.backingScaleFactor ?? 2
-		layer?.addSublayer(titleLayer)
-		setTitle()
+        layer?.masksToBounds = false
+
+        layer?.cornerRadius = cornerRadius
+        layer?.borderWidth = borderWidth
+        layer?.shadowRadius = isOn && activeShadowRadius != -1 ? activeShadowRadius : shadowRadius
+        layer?.shadowOpacity = isOn && activeShadowOpacity != -1 ? activeShadowOpacity : shadowOpacity
+        layer?.backgroundColor = isOn ? self.activeBackgroundColor.cgColor : self.backgroundColor.cgColor
+        layer?.borderColor = isOn ? self.activeBorderColor.cgColor : self.borderColor.cgColor
+        layer?.shadowColor = isOn ? (self.activeShadowColor?.cgColor ?? self.shadowColor.cgColor) : self.shadowColor.cgColor
+
+        titleLayer.alignmentMode = .center
+        titleLayer.contentsScale = window?.backingScaleFactor ?? 2
+        titleLayer.foregroundColor = isOn ? self.activeTextColor.cgColor : self.textColor.cgColor
+        layer?.addSublayer(titleLayer)
+        setTitle()
 
 		needsDisplay = true
 	}
