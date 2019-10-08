@@ -208,11 +208,6 @@ open class CustomButton: NSButton {
 	}
 
 	override open func updateLayer() {
-		let isOn = state == .on
-		layer?.cornerRadius = CGFloat(cornerRadius)
-		layer?.borderWidth = CGFloat(borderWidth)
-		layer?.shadowRadius = CGFloat(isOn && activeShadowRadius != -1 ? activeShadowRadius : shadowRadius)
-		layer?.shadowOpacity = Float(isOn && activeShadowOpacity != -1 ? activeShadowOpacity : shadowOpacity)
 		animateColor()
 	}
 
