@@ -36,13 +36,13 @@ open class CustomButton: NSButton {
 
 	@IBInspectable public var cornerRadius: Double = 0 {
 		didSet {
-            layer?.cornerRadius = cornerRadius
+            layer?.cornerRadius = CGFloat(cornerRadius)
 		}
 	}
 
 	@IBInspectable public var borderWidth: Double = 0 {
 		didSet {
-            layer?.borderWidth = borderWidth
+            layer?.borderWidth = CGFloat(borderWidth)
 		}
 	}
 
@@ -72,25 +72,25 @@ open class CustomButton: NSButton {
 
 	@IBInspectable public var shadowRadius: Double = 0 {
 		didSet {
-            layer?.shadowRadius = shadowRadius
+            layer?.shadowRadius = CGFloat(shadowRadius)
 		}
 	}
 
 	@IBInspectable public var activeShadowRadius: Double = -1 {
 		didSet {
-            if state == .on { layer?.shadowRadius = activeShadowRadius }
+            if state == .on { layer?.shadowRadius = CGFloat(activeShadowRadius) }
 		}
 	}
 
 	@IBInspectable public var shadowOpacity: Double = 0 {
 		didSet {
-            layer?.shadowOpacity = shadowOpacity
+            layer?.shadowOpacity = Float(shadowOpacity)
 		}
 	}
 
 	@IBInspectable public var activeShadowOpacity: Double = -1 {
 		didSet {
-            if state == .on { layer?.shadowOpacity = activeShadowOpacity }
+            if state == .on { layer?.shadowOpacity = Float(activeShadowOpacity) }
 		}
 	}
 
@@ -172,10 +172,10 @@ open class CustomButton: NSButton {
 
         layer?.masksToBounds = false
 
-        layer?.cornerRadius = cornerRadius
-        layer?.borderWidth = borderWidth
-        layer?.shadowRadius = isOn && activeShadowRadius != -1 ? activeShadowRadius : shadowRadius
-        layer?.shadowOpacity = isOn && activeShadowOpacity != -1 ? activeShadowOpacity : shadowOpacity
+        layer?.cornerRadius = CGFloat(cornerRadius)
+        layer?.borderWidth = CGFloat(borderWidth)
+        layer?.shadowRadius = CGFloat(isOn && activeShadowRadius != -1 ? activeShadowRadius : shadowRadius)
+        layer?.shadowOpacity = Float(isOn && activeShadowOpacity != -1 ? activeShadowOpacity : shadowOpacity)
         layer?.backgroundColor = isOn ? self.activeBackgroundColor.cgColor : self.backgroundColor.cgColor
         layer?.borderColor = isOn ? self.activeBorderColor.cgColor : self.borderColor.cgColor
         layer?.shadowColor = isOn ? (self.activeShadowColor?.cgColor ?? self.shadowColor.cgColor) : self.shadowColor.cgColor
