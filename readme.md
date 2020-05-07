@@ -8,22 +8,19 @@ It's a layer-based NSButton subclass that animates the styles and colors between
 
 This package is used in production by [Gifski](https://github.com/sindresorhus/Gifski).
 
-
 ## Requirements
 
 - macOS 10.12+
-- Xcode 11+
-- Swift 5.1+
-
+- Xcode 11.4+
+- Swift 5.2+
 
 ## Install
 
-SwiftPM:
+Swift Package Manager:
 
 ```swift
 .package(url: "https://github.com/sindresorhus/CustomButton", from: "1.0.0")
 ```
-
 
 ## Usage
 
@@ -63,7 +60,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 The button can also be edited in Interface Builder, but Xcode is very buggy with `@IBDesignable`, so I would recommend using it only programmatically for now.
 
-
 ## FAQ
 
 #### Can you support Carthage and CocoaPods?
@@ -74,11 +70,11 @@ No, but you can still use SwiftPM for this package even though you mainly use Ca
 
 SwiftUI does indeed make it much easier to create custom-looking buttons, but SwiftUI is still immature and most companies will not be able to require macOS 10.15 for a long time. So this package will still be useful for multiple years to come.
 
-
 ## Related
 
 - [Defaults](https://github.com/sindresorhus/Defaults) - Swifty and modern UserDefaults
 - [Preferences](https://github.com/sindresorhus/Preferences) - Add a preferences window to your macOS app
+- [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts) - Add user-customizable global keyboard shortcuts to your macOS app
 - [LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin) - Add "Launch at Login" functionality to your macOS app
 - [DockProgress](https://github.com/sindresorhus/DockProgress) - Show progress in your app's Dock icon
 - [CircularProgress](https://github.com/sindresorhus/CircularProgress) - Circular progress indicator for your macOS app
