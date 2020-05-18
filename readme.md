@@ -16,11 +16,7 @@ This package is used in production by [Gifski](https://github.com/sindresorhus/G
 
 ## Install
 
-Swift Package Manager:
-
-```swift
-.package(url: "https://github.com/sindresorhus/CustomButton", from: "1.0.0")
-```
+Add `https://github.com/sindresorhus/CustomButton` in the [“Swift Package Manager” tab in Xcode](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
 
 ## Usage
 
