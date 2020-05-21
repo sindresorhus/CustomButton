@@ -60,7 +60,7 @@ The button can also be edited in Interface Builder, but Xcode is very buggy with
 
 #### Can you support Carthage and CocoaPods?
 
-No, but you can still use SwiftPM for this package even though you mainly use Carthage or CocoaPods.
+No, but you can still use Swift Package Manager for this package even though you mainly use Carthage or CocoaPods.
 
 #### Won't SwiftUI make this moot?
 

@@ -1,8 +1,8 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
-	@IBOutlet weak var window: NSWindow!
+final class AppDelegate: NSObject, NSApplicationDelegate {
+	@IBOutlet private var window: NSWindow!
 
 	func applicationDidFinishLaunching(_ notification: Notification) {
 		let button = CustomButton()

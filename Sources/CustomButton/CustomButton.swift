@@ -186,13 +186,13 @@ open class CustomButton: NSButton {
 		layer?.borderWidth = CGFloat(borderWidth)
 		layer?.shadowRadius = CGFloat(isOn && activeShadowRadius != -1 ? activeShadowRadius : shadowRadius)
 		layer?.shadowOpacity = Float(isOn && activeShadowOpacity != -1 ? activeShadowOpacity : shadowOpacity)
-		layer?.backgroundColor = isOn ? self.activeBackgroundColor.cgColor : self.backgroundColor.cgColor
-		layer?.borderColor = isOn ? self.activeBorderColor.cgColor : self.borderColor.cgColor
-		layer?.shadowColor = isOn ? (self.activeShadowColor?.cgColor ?? self.shadowColor.cgColor) : self.shadowColor.cgColor
+		layer?.backgroundColor = isOn ? activeBackgroundColor.cgColor : backgroundColor.cgColor
+		layer?.borderColor = isOn ? activeBorderColor.cgColor : borderColor.cgColor
+		layer?.shadowColor = isOn ? (activeShadowColor?.cgColor ?? shadowColor.cgColor) : shadowColor.cgColor
 
 		titleLayer.alignmentMode = .center
 		titleLayer.contentsScale = window?.backingScaleFactor ?? 2
-		titleLayer.foregroundColor = isOn ? self.activeTextColor.cgColor : self.textColor.cgColor
+		titleLayer.foregroundColor = isOn ? activeTextColor.cgColor : textColor.cgColor
 		layer?.addSublayer(titleLayer)
 		setTitle()
 

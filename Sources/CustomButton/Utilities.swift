@@ -1,5 +1,6 @@
 import Cocoa
 
+
 /**
 Convenience function for initializing an object and modifying its properties.
 
@@ -43,7 +44,7 @@ final class TrackingArea {
 	private weak var view: NSView?
 	private let rect: CGRect
 	private let options: NSTrackingArea.Options
-	private var trackingArea: NSTrackingArea?
+	private weak var trackingArea: NSTrackingArea?
 
 	/**
 	- Parameters:
@@ -100,8 +101,7 @@ extension CALayer: LayerColorAnimation {}
 extension LayerColorAnimation where Self: CALayer {
 	/// Animate colors.
 	func animate(_ keyPath: ReferenceWritableKeyPath<Self, CGColor?>, to color: CGColor, duration: Double) {
-		let keyPathString = NSExpression(forKeyPath: keyPath).keyPath
-		let animation = CABasicAnimation(keyPath: keyPathString)
+		let animation = CABasicAnimation(keyPath: keyPath.toString)
 		animation.fromValue = self[keyPath: keyPath]
 		animation.toValue = color
 		animation.duration = duration
@@ -120,11 +120,10 @@ extension LayerColorAnimation where Self: CALayer {
 
 	/// Add color animation.
 	func add(_ animation: CAAnimation, forKeyPath keyPath: ReferenceWritableKeyPath<Self, CGColor?>, completion: @escaping ((Bool) -> Void)) {
-		let keyPathString = NSExpression(forKeyPath: keyPath).keyPath
 		let animationDelegate = AnimationDelegate()
 		animationDelegate.didStopHandler = completion
 		animation.delegate = animationDelegate
-		add(animation, forKey: keyPathString)
+		add(animation, forKey: keyPath.toString)
 	}
 }
 
@@ -154,5 +153,13 @@ extension CGSize {
 			width: width,
 			height: height
 		)
+	}
+}
+
+
+extension KeyPath where Root: NSObject {
+	/// Get the string version of the key path when the root is an `NSObject`.
+	var toString: String {
+		NSExpression(forKeyPath: self).keyPath
 	}
 }
