@@ -44,7 +44,7 @@ open class CustomButton: NSButton {
 
 	@IBInspectable public var hasContinuousCorners: Bool = true {
 		didSet {
-			if #available(OSX 10.15, *) {
+			if #available(macOS 10.15, *) {
 				layer?.cornerCurve = hasContinuousCorners ? .continuous : .circular
 			}
 		}
@@ -198,7 +198,7 @@ open class CustomButton: NSButton {
 		layer?.borderColor = isOn ? activeBorderColor.cgColor : borderColor.cgColor
 		layer?.shadowColor = isOn ? (activeShadowColor?.cgColor ?? shadowColor.cgColor) : shadowColor.cgColor
 
-		if #available(OSX 10.15, *) {
+		if #available(macOS 10.15, *) {
 			layer?.cornerCurve = hasContinuousCorners ? .continuous : .circular
 		}
 
