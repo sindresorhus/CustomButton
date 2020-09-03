@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2228A52F2501343A00981867 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228A52E2501343A00981867 /* Utilities.swift */; };
 		E30303402336989400B8ED1F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E303033E2336989400B8ED1F /* CustomButton.swift */; };
-		E30303412336989400B8ED1F /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E303033F2336989400B8ED1F /* util.swift */; };
 		E3A01E872336904F00C54787 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A01E862336904F00C54787 /* AppDelegate.swift */; };
 		E3A01E8C2336905000C54787 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3A01E8A2336905000C54787 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2228A52E2501343A00981867 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		E303033E2336989400B8ED1F /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		E303033F2336989400B8ED1F /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		E3A01E832336904F00C54787 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A01E862336904F00C54787 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3A01E8B2336905000C54787 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 			isa = PBXGroup;
 			children = (
 				E303033E2336989400B8ED1F /* CustomButton.swift */,
-				E303033F2336989400B8ED1F /* util.swift */,
+				2228A52E2501343A00981867 /* Utilities.swift */,
 			);
 			name = CustomButton;
 			path = ../../Sources/CustomButton;
@@ -145,7 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E30303412336989400B8ED1F /* util.swift in Sources */,
+				2228A52F2501343A00981867 /* Utilities.swift in Sources */,
 				E30303402336989400B8ED1F /* CustomButton.swift in Sources */,
 				E3A01E872336904F00C54787 /* AppDelegate.swift in Sources */,
 			);
