@@ -11,8 +11,8 @@ This package is used in production by [Gifski](https://github.com/sindresorhus/G
 ## Requirements
 
 - macOS 10.12+
-- Xcode 11.4+
-- Swift 5.2+
+- Xcode 12+
+- Swift 5.3+
 
 ## Install
 
@@ -26,8 +26,8 @@ See the [source](Sources/CustomButton/CustomButton.swift) for what properties yo
 import Cocoa
 import CustomButton
 
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+@main
+final class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet weak var window: NSWindow!
 
 	func applicationDidFinishLaunching(_ notification: Notification) {
