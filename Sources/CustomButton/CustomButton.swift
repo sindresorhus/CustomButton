@@ -42,13 +42,13 @@ open class CustomButton: NSButton {
 		}
 	}
 
-    @IBInspectable public var hasContinuousCorners: Bool = true {
-        didSet {
-            if #available(OSX 10.15, *) {
-                layer?.cornerCurve = hasContinuousCorners ? .continuous : .circular
-            }
-        }
-    }
+	@IBInspectable public var hasContinuousCorners: Bool = true {
+		didSet {
+			if #available(OSX 10.15, *) {
+				layer?.cornerCurve = hasContinuousCorners ? .continuous : .circular
+			}
+		}
+	}
 
 	@IBInspectable public var borderWidth: Double = 0 {
 		didSet {
@@ -198,9 +198,9 @@ open class CustomButton: NSButton {
 		layer?.borderColor = isOn ? activeBorderColor.cgColor : borderColor.cgColor
 		layer?.shadowColor = isOn ? (activeShadowColor?.cgColor ?? shadowColor.cgColor) : shadowColor.cgColor
 
-        if #available(OSX 10.15, *) {
-            layer?.cornerCurve = hasContinuousCorners ? .continuous : .circular
-        }
+		if #available(OSX 10.15, *) {
+			layer?.cornerCurve = hasContinuousCorners ? .continuous : .circular
+		}
 
 		titleLayer.alignmentMode = .center
 		titleLayer.contentsScale = window?.backingScaleFactor ?? 2
