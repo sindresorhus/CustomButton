@@ -11,8 +11,8 @@ This package is used in production by [Gifski](https://github.com/sindresorhus/G
 ## Requirements
 
 - macOS 10.12+
-- Xcode 12+
-- Swift 5.3+
+- Xcode 13+
+- Swift 5.5+
 
 ## Install
 

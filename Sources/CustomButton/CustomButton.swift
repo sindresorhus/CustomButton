@@ -8,9 +8,9 @@ open class CustomButton: NSButton {
 	public static func circularButton(title: String, radius: Double, center: CGPoint) -> CustomButton {
 		with(CustomButton()) {
 			$0.title = title
-			$0.frame = CGRect(x: Double(center.x) - radius, y: Double(center.y) - radius, width: radius * 2, height: radius * 2)
+			$0.frame = CGRect(x: center.x - radius, y: center.y - radius, width: radius * 2, height: radius * 2)
 			$0.cornerRadius = radius
-			$0.font = .systemFont(ofSize: CGFloat(radius * 2 / 3))
+			$0.font = .systemFont(ofSize: radius * 2 / 3)
 		}
 	}
 
@@ -38,7 +38,7 @@ open class CustomButton: NSButton {
 
 	@IBInspectable public var cornerRadius: Double = 0 {
 		didSet {
-			layer?.cornerRadius = CGFloat(cornerRadius)
+			layer?.cornerRadius = cornerRadius
 		}
 	}
 
@@ -52,7 +52,7 @@ open class CustomButton: NSButton {
 
 	@IBInspectable public var borderWidth: Double = 0 {
 		didSet {
-			layer?.borderWidth = CGFloat(borderWidth)
+			layer?.borderWidth = borderWidth
 		}
 	}
 
@@ -86,14 +86,14 @@ open class CustomButton: NSButton {
 
 	@IBInspectable public var shadowRadius: Double = 0 {
 		didSet {
-			layer?.shadowRadius = CGFloat(shadowRadius)
+			layer?.shadowRadius = shadowRadius
 		}
 	}
 
 	@IBInspectable public var activeShadowRadius: Double = -1 {
 		didSet {
 			if state == .on {
-				layer?.shadowRadius = CGFloat(activeShadowRadius)
+				layer?.shadowRadius = activeShadowRadius
 			}
 		}
 	}
@@ -190,9 +190,9 @@ open class CustomButton: NSButton {
 
 		layer?.masksToBounds = false
 
-		layer?.cornerRadius = CGFloat(cornerRadius)
-		layer?.borderWidth = CGFloat(borderWidth)
-		layer?.shadowRadius = CGFloat(isOn && activeShadowRadius != -1 ? activeShadowRadius : shadowRadius)
+		layer?.cornerRadius = cornerRadius
+		layer?.borderWidth = borderWidth
+		layer?.shadowRadius = isOn && activeShadowRadius != -1 ? activeShadowRadius : shadowRadius
 		layer?.shadowOpacity = Float(isOn && activeShadowOpacity != -1 ? activeShadowOpacity : shadowOpacity)
 		layer?.backgroundColor = isOn ? activeBackgroundColor.cgColor : backgroundColor.cgColor
 		layer?.borderColor = isOn ? activeBorderColor.cgColor : borderColor.cgColor
