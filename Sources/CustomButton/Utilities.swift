@@ -99,7 +99,9 @@ protocol LayerColorAnimation: AnyObject {}
 extension CALayer: LayerColorAnimation {}
 
 extension LayerColorAnimation where Self: CALayer {
-	/// Animate colors.
+	/**
+	Animate colors.
+	*/
 	func animate(_ keyPath: ReferenceWritableKeyPath<Self, CGColor?>, to color: CGColor, duration: Double) {
 		let animation = CABasicAnimation(keyPath: keyPath.toString)
 		animation.fromValue = self[keyPath: keyPath]
@@ -113,12 +115,16 @@ extension LayerColorAnimation where Self: CALayer {
 		}
 	}
 
-	/// Animate colors.
+	/**
+	Animate colors.
+	*/
 	func animate(_ keyPath: ReferenceWritableKeyPath<Self, CGColor?>, to color: NSColor, duration: Double) {
 		animate(keyPath, to: color.cgColor, duration: duration)
 	}
 
-	/// Add color animation.
+	/**
+	Add color animation.
+	*/
 	func add(_ animation: CAAnimation, forKeyPath keyPath: ReferenceWritableKeyPath<Self, CGColor?>, completion: @escaping ((Bool) -> Void)) {
 		let animationDelegate = AnimationDelegate()
 		animationDelegate.didStopHandler = completion
@@ -145,7 +151,9 @@ extension CGRect {
 
 
 extension CGSize {
-	/// Returns a CGRect with `self` centered in it.
+	/**
+	Returns a CGRect with `self` centered in it.
+	*/
 	func centered(in rect: CGRect) -> CGRect {
 		CGRect(
 			x: (rect.width - width) / 2,
@@ -158,7 +166,9 @@ extension CGSize {
 
 
 extension KeyPath where Root: NSObject {
-	/// Get the string version of the key path when the root is an `NSObject`.
+	/**
+	Get the string version of the key path when the root is an `NSObject`.
+	*/
 	var toString: String {
 		NSExpression(forKeyPath: self).keyPath
 	}
