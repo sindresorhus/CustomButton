@@ -120,7 +120,7 @@ open class CustomButton: NSButton {
 
 	@IBInspectable public var activeShadowColor: NSColor? {
 		didSet {
-			if state == .on, let activeShadowColor = activeShadowColor {
+			if state == .on, let activeShadowColor {
 				layer?.shadowColor = activeShadowColor.cgColor
 			}
 		}
